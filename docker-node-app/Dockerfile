@@ -1,5 +1,6 @@
 # Use official Node.js LTS Alpine image (no space after "node")
-FROM node:lts-alpine
+#Stage 1
+FROM node:18-alpine AS backend-builder
 
 # Set working directory inside the container
 WORKDIR /app
@@ -9,7 +10,11 @@ COPY . .
 
 # Install dependencies listed in package.json
 RUN npm install
-
+#Stage 2
+FROM node:18-alpine
+#set up working dir
+WORKDIR /app
+COPY --from=backend-builder /app .
 # Expose port 3000 to the host machine
 EXPOSE 3000
 
