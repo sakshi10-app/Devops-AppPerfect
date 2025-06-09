@@ -8,6 +8,6 @@ data:
       listen 80;
 
       location / {
-        proxy_pass http://backend-service;
+        proxy_pass http://backend-service:9090;
       }
     }
