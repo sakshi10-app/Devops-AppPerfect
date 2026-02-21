@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cluster-role-test
+  namespace: cluster-demo
+spec:
+  serviceAccountName: cluster-reader
+  containers:
+  - name: kubectl-container
+    image: bitnami/kubectl:1.27
+    command:
+    - sleep
+    - "3600"
+

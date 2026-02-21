@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: static-pv
+spec:
+  capacity:
+    storage: 1Gi              # Like a 1GB storage room
+  accessModes:
+    - ReadWriteOnce           # One Pod can read+write at a time
+  hostPath:
+    path: "/mnt/data"         # Local folder on the Minikube host
+  persistentVolumeReclaimPolicy: Retain
